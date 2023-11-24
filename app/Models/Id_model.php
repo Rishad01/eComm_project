@@ -10,7 +10,7 @@ class Id_model extends Model{
         $result=$builder->get();
         if(count($result->getRowArray())==1)
         {
-            print_r( $result->getRowArray());
+            //print_r( $result->getRowArray());
             return $result->getRowArray();
         }
         else
