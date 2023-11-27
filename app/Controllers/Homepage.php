@@ -28,7 +28,10 @@ class Homepage extends Controller
     public function signup()
     {
         $id_no=$this->idmodel->getuserid();
-        print_r($id_no['user']);
+        $id = "ID"."-";
+                $myTime =  date("Ymd-h:i:s-");
+                $user_id=$id.$myTime.$id_no['user'];
+                print_r($user_id);
         $data=[];
         $rules=[
             'name' => 'required',
@@ -44,13 +47,9 @@ class Homepage extends Controller
         }
         else if($this->request->getMethod()=='post')
         {
-            
-            
-                $cc = "ecomm";
-                $coun = str_pad($cc,4,STR_PAD_BOTH);
                 $id = "ID"."-";
-                $myTime =  date("Y-m-d h:i:sa");
-                $user_id=$id.$myTime.$coun;
+                $myTime =  date("Ymd-h:i:s-");
+                $user_id=$id.$myTime.$id_no['user'];
                 $cdata=[
                     'user_id' => $user_id,
                     'name'=> $this->request->getVar('name',FILTER_SANITIZE_STRING),
