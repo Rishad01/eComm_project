@@ -28,10 +28,7 @@ class Homepage extends Controller
     public function signup()
     {
         $id_no=$this->idmodel->getuserid();
-        $id = "ID"."-";
-                $myTime =  date("Ymd-h:i:s-");
-                $user_id=$id.$myTime.$id_no['user'];
-                print_r($user_id);
+        
         $data=[];
         $rules=[
             'name' => 'required',
@@ -48,7 +45,7 @@ class Homepage extends Controller
         else if($this->request->getMethod()=='post')
         {
                 $id = "ID"."-";
-                $myTime =  date("Ymd-h:i:s-");
+                $myTime =  date("Ymd-his-");
                 $user_id=$id.$myTime.$id_no['user'];
                 $cdata=[
                     'user_id' => $user_id,
@@ -58,6 +55,16 @@ class Homepage extends Controller
                     'addr' => $this->request->getVar('addr',FILTER_SANITIZE_STRING),
                     'pass' => password_hash($this->request->getVar('pass'),PASSWORD_DEFAULT)
                 ];
+                echo $id_no['user']=$id_no['user']+1;
+
+                if($this->idmodel->update_prodid($id_no['user'],'IDSERIAL'))
+                {
+                    echo 'updated';
+                }
+                else
+                {
+                    echo 'not updated';
+                }
                 if($this->signupmodel->savedata($cdata))
                 {
                     echo 'registered';
