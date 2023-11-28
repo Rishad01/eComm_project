@@ -100,4 +100,19 @@ class Admin_model extends Model{
             return false;
         }
     }
+
+    public function order_detail()
+    {
+        $builder=$this->db->table('finalorder');
+        $builder->select('*');
+        $result=$builder->get();
+        if(count($result->getResultArray())>=1)
+        {
+            return $result->getResultArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

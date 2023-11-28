@@ -20,3 +20,4 @@ $routes->get('admin/edit_prod/(:any)', 'Admin::edit_prod/$1');
 $routes->post('admin/edit_prod', 'Admin::edit_prod');
 $routes->get('admin/service_area', 'Admin::service_area');
 $routes->post('admin/service_area', 'Admin::service_area');
+$routes->get('admin/orders', 'Admin::orders');

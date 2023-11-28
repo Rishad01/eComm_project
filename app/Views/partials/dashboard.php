@@ -10,7 +10,7 @@
           <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
           <li><a href="<?= base_url('admin/category') ?>" class="nav-link px-2 link-body-emphasis">Categories</a></li>
           <li><a href="<?= base_url('admin/product') ?>" class="nav-link px-2 link-body-emphasis">Products</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Status of Orders</a></li>
+          <li><a href="<?= base_url('admin/orders') ?>" class="nav-link px-2 link-body-emphasis">Orders</a></li>
           <li><a href="<?= base_url('admin/service_area') ?>" class="nav-link px-2 link-body-emphasis">Availability</a></li>
         </ul>
 

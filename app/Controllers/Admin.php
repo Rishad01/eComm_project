@@ -164,4 +164,12 @@ class Admin extends Controller{
         }
         return view('service_area_view',$data);
     }
+
+    public function orders()
+    {
+        $data=[
+            'orders'=>$this->adminmodel->order_detail()
+        ];
+        return view('orders_view',$data);
+    }
 }
