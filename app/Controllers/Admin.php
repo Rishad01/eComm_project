@@ -4,12 +4,15 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use \App\Models\Admin_model;
+use \App\Models\Id_model;
 
 class Admin extends Controller{
     public $adminmodel;
+    public $idmodel;
     public function __construct()
     {
         $this->adminmodel=new Admin_model();
+        $this->idmodel=new Id_model();
     }
 
     public function index()
@@ -19,6 +22,7 @@ class Admin extends Controller{
     public function category()
     {
         $catg=['data'=>$this->adminmodel->loaddata()];
+        $cat_id_no=$this->idmodel->getcatid();
         //print_r($data);
         if($this->request->getMethod()=='post')
         {
@@ -31,8 +35,8 @@ class Admin extends Controller{
 
                     $path=base_url().'category/'.$file->getName();
                     $id = "CAT"."-";
-                    $myTime =  date("Y-m-d h:i:sa");
-                    $cat_id=$id.$myTime.random_bytes(5).random_int(1,999);
+                    $myTime =  date("Ymd-his-");
+                    $cat_id=$id.$myTime.$cat_id_no['cat'];
                     print_r($cat_id);
                     $cdata=[
                         'cat_id'=>$cat_id,
@@ -42,6 +46,14 @@ class Admin extends Controller{
                     $status=$this->adminmodel->addcat($cdata);
                     if($status)
                     {
+                        if($this->idmodel->update_catid($cat_id_no['cat'],'CATSERIAL'))
+                        {
+                            echo 'updated';
+                        }
+                        else
+                        {
+                            echo 'not updated';
+                        }
                         echo 'Added';
                     }
                     else{
@@ -63,6 +75,8 @@ class Admin extends Controller{
             'data'=>$this->adminmodel->loaddata(),
             'proddata'=>$this->adminmodel->loadprod()
         ];
+
+        $prod_id_no=$this->idmodel->getprodid();
         
         if($this->request->getMethod()=='post')
         {
@@ -74,9 +88,9 @@ class Admin extends Controller{
                 {
 
                     $path=base_url().'product/'.$file->getName();
-                    $id = "PRO"."-";
-                    $myTime =  date("Y-m-d h:i:sa");
-                    $prod_id=$id.$myTime.random_bytes(5).random_int(1,999);
+                    $id = "PROD"."-";
+                    $myTime =  date("Ymd-his-");
+                    $prod_id=$id.$myTime.$prod_id_no['prod'];
                     print_r($prod_id);
                     $cdata=[
                         'prod_id'=>$prod_id,
@@ -92,6 +106,14 @@ class Admin extends Controller{
                     $status=$this->adminmodel->addprod($cdata);
                     if($status)
                     {
+                        if($this->idmodel->update_prodid($prod_id_no['prod'],'PRODSERIAL'))
+                        {
+                            echo 'updated';
+                        }
+                        else
+                        {
+                            echo 'not updated';
+                        }
                         echo 'Added';
                     }
                     else{

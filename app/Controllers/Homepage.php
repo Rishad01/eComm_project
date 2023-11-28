@@ -57,7 +57,9 @@ class Homepage extends Controller
                 ];
                 echo $id_no['user']=$id_no['user']+1;
 
-                if($this->idmodel->update_prodid($id_no['user'],'IDSERIAL'))
+                if($this->signupmodel->savedata($cdata))
+                {
+                if($this->idmodel->update_userid($id_no['user'],'IDSERIAL'))
                 {
                     echo 'updated';
                 }
@@ -65,8 +67,6 @@ class Homepage extends Controller
                 {
                     echo 'not updated';
                 }
-                if($this->signupmodel->savedata($cdata))
-                {
                     echo 'registered';
                 }
            
