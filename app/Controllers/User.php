@@ -15,7 +15,10 @@ class User extends Controller
     }
     public function profile($user_id)
     {
-        $data=$this->usermodel->get_user($user_id);
-        return view('profile_view');
+        $user=[
+            'data'=>$this->usermodel->get_user($user_id)
+        ];
+        print_r($user);
+        return view('profile_view',$user);
     }
 }
