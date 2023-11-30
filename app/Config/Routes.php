@@ -21,3 +21,7 @@ $routes->post('admin/edit_prod', 'Admin::edit_prod');
 $routes->get('admin/service_area', 'Admin::service_area');
 $routes->post('admin/service_area', 'Admin::service_area');
 $routes->get('admin/orders', 'Admin::orders');
+$routes->get('user/profile/(:any)', 'User::profile/$1');
+$routes->get('admin/status_change/(:any)', 'Admin::status_change/$1');
+$routes->post('admin/status_change/(:any)', 'Admin::status_change/$1');
+

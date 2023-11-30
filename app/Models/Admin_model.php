@@ -115,4 +115,12 @@ class Admin_model extends Model{
             return false;
         }
     }
+
+    public function update_status($status,$order_id)
+    {
+        $builder=$this->db->table('finalorder');
+        $builder->set('status',$status);
+        $builder->where('order_id',$order_id);
+        $builder->update();
+    }
 }

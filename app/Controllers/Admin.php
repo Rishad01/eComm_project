@@ -170,6 +170,20 @@ class Admin extends Controller{
         $data=[
             'orders'=>$this->adminmodel->order_detail()
         ];
+
         return view('orders_view',$data);
+    }
+
+    public function status_change($order_id)
+    {
+        if($this->request->getMethod()=='post')
+        {
+            $cdata=[
+                'status'=>$this->request->getVar('status')
+            ];
+
+            $this->adminmodel->update_status($cdata['status'],$order_id);
+            return redirect()->to(base_url('admin/orders'));
+        }
     }
 }
