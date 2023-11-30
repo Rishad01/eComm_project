@@ -19,4 +19,35 @@ class User_model extends Model{
             return false;
         }
     }
+
+    public function get_category()
+    {
+        $builder=$this->db->table('category');
+        $builder->select('*');
+        $result=$builder->get();
+        if(count($result->getResultArray())>=1)
+        {
+            return $result->getResultArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function get_product($cat_id)
+    {
+        $builder=$this->db->table('product');
+        $builder->where('cat_id',$cat_id);
+        $builder->select('*');
+        $result=$builder->get();
+        if(count($result->getResultArray())>=1)
+        {
+            return $result->getResultArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
