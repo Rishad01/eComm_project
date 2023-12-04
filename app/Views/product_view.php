@@ -60,10 +60,15 @@
         <label for="floatingInput">Quantity</label>
      </div>
 
+     <div class="form-floating">
+        <input type="text" name="unit" class="form-control" id="floatingInput" placeholder="bags,kg,etc">
+        <label for="floatingInput">Unit</label>
+     </div>
+
      <div>
         <p>Enter category</p>
         <?php if($data): ?>
-            <select class="form-select" aria-label="Default select example">
+            <select name="cat_id" class="form-select" aria-label="Default select example">
             <option selected>Choose Category</option>
             <?php foreach($data as $cat): ?>
                 <option value="<?= $cat['cat_id'] ?>"><?= $cat['name'] ?></option>

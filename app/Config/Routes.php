@@ -24,4 +24,8 @@ $routes->get('admin/orders', 'Admin::orders');
 $routes->get('user/profile/(:any)', 'User::profile/$1');
 $routes->get('admin/status_change/(:any)', 'Admin::status_change/$1');
 $routes->post('admin/status_change/(:any)', 'Admin::status_change/$1');
+$routes->get('user/category_page', 'User::category_page');
+$routes->get('user/prod_page/(:any)', 'User::prod_page/$1');
+$routes->post('user/cart/(:any)', 'User::cart/$1');
+
 

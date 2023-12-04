@@ -46,7 +46,8 @@ class Admin extends Controller{
                     $status=$this->adminmodel->addcat($cdata);
                     if($status)
                     {
-                        if($this->idmodel->update_catid($cat_id_no['cat'],'CATSERIAL'))
+                        $cat_id_no['cat']=$cat_id_no['cat']+1;
+                        if($this->idmodel->update_catid($cat_id_no['cat'],'IDSERIAL'))
                         {
                             echo 'updated';
                         }
@@ -94,19 +95,21 @@ class Admin extends Controller{
                     print_r($prod_id);
                     $cdata=[
                         'prod_id'=>$prod_id,
+                        'cat_id'=>$this->request->getVar('cat_id'),
                         'name'=>$this->request->getVar('product'),
                         'sprice'=>$this->request->getVar('sprice'),
                         'cprice'=>$this->request->getVar('cprice'),
                         'descr'=>$this->request->getVar('descr'),
                         'qty'=>$this->request->getVar('qty'),
-                        'cat_id'=>$this->request->getVar('cat_id'),
+                        'unit'=>$this->request->getVAr('unit'),
                         'image'=>$path
                     ];
                     print_r($cdata);
                     $status=$this->adminmodel->addprod($cdata);
                     if($status)
                     {
-                        if($this->idmodel->update_prodid($prod_id_no['prod'],'PRODSERIAL'))
+                        $prod_id_no['prod']=$prod_id_no['prod']+1;
+                        if($this->idmodel->update_prodid($prod_id_no['prod'],'IDSERIAL'))
                         {
                             echo 'updated';
                         }

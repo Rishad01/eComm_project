@@ -55,11 +55,11 @@ class Homepage extends Controller
                     'addr' => $this->request->getVar('addr',FILTER_SANITIZE_STRING),
                     'pass' => password_hash($this->request->getVar('pass'),PASSWORD_DEFAULT)
                 ];
-                echo $id_no['user']=$id_no['user']+1;
+                
 
                 if($this->signupmodel->savedata($cdata))
                 {
-                if($this->idmodel->update_userid($id_no['user'],'IDSERIAL'))
+                if($this->idmodel->update_userid($id_no['user']+1,'IDSERIAL'))
                 {
                     echo 'updated';
                 }

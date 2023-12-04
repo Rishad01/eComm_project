@@ -1,1 +1,95 @@
 INFO - 2023-11-30 06:39:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-30 08:45:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-11-30 10:24:11 --> Invalid file: "category_page_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('category_page_view.php')
+ 2 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('category_page_view', [], true)
+ 3 APPPATH\Controllers\User.php(31): view('category_page_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\User->category_page()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-30 12:07:41 --> foreach() argument must be of type array|object, bool given
+in APPPATH\Views\prod_page_view.php on line 8.
+ 1 APPPATH\Views\prod_page_view.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, bool given', 'C:\\xampp\\htdocs\\eComm_project\\app\\Views\\prod_page_view.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\eComm_project\\app\\Views\\prod_page_view.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('prod_page_view', [], true)
+ 5 APPPATH\Controllers\User.php(39): view('prod_page_view', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\User->prod_page('<')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-30 12:13:29 --> mysqli_sql_exception: Column 'cat_id' cannot be null in C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pr...', 0)
+#1 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 C:\xampp\htdocs\eComm_project\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 C:\xampp\htdocs\eComm_project\app\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\eComm_project\app\Controllers\Admin.php(106): App\Models\Admin_model->addprod(Array)
+#6 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(942): App\Controllers\Admin->product()
+#7 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\eComm_project\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-30 12:13:29 --> Column 'cat_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `product` (`prod_id`, `name`, `sprice`, `cprice`, `descr`, `qty`, `cat_id`, `image`) VALUES (:prod_id:, :name:, :sprice:, :cprice:, :descr:, :qty:, :cat_id:, :image:)', [...], false)
+ 2 APPPATH\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Admin.php(106): App\Models\Admin_model->addprod([...])
+ 4 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin->product()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-30 12:15:12 --> mysqli_sql_exception: Column 'cat_id' cannot be null in C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pr...', 0)
+#1 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 C:\xampp\htdocs\eComm_project\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 C:\xampp\htdocs\eComm_project\app\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\eComm_project\app\Controllers\Admin.php(106): App\Models\Admin_model->addprod(Array)
+#6 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(942): App\Controllers\Admin->product()
+#7 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\eComm_project\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-30 12:15:12 --> Column 'cat_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `product` (`prod_id`, `name`, `sprice`, `cprice`, `descr`, `qty`, `cat_id`, `image`) VALUES (:prod_id:, :name:, :sprice:, :cprice:, :descr:, :qty:, :cat_id:, :image:)', [...], false)
+ 2 APPPATH\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Admin.php(106): App\Models\Admin_model->addprod([...])
+ 4 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin->product()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-30 12:17:09 --> mysqli_sql_exception: Column 'cat_id' cannot be null in C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\eComm_project\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pr...', 0)
+#1 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 C:\xampp\htdocs\eComm_project\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 C:\xampp\htdocs\eComm_project\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 C:\xampp\htdocs\eComm_project\app\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\eComm_project\app\Controllers\Admin.php(106): App\Models\Admin_model->addprod(Array)
+#6 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(942): App\Controllers\Admin->product()
+#7 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\xampp\htdocs\eComm_project\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\eComm_project\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-11-30 12:17:09 --> Column 'cat_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `product` (`prod_id`, `name`, `sprice`, `cprice`, `descr`, `qty`, `cat_id`, `image`) VALUES (:prod_id:, :name:, :sprice:, :cprice:, :descr:, :qty:, :cat_id:, :image:)', [...], false)
+ 2 APPPATH\Models\Admin_model.php(38): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Admin.php(106): App\Models\Admin_model->addprod([...])
+ 4 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin->product()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-30 12:27:03 --> Undefined variable $status
+in APPPATH\Controllers\Admin.php on line 107.
+ 1 APPPATH\Controllers\Admin.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $status', 'C:\\xampp\\htdocs\\eComm_project\\app\\Controllers\\Admin.php', 107)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin->product()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

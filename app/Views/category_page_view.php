@@ -15,7 +15,7 @@
                     <p class="card-text"><?= $category['name']; ?></p>
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a href="<?= base_url('user/prod_page/')?><? $category['cat_id']; ?> " type="button" class="btn btn-sm btn-outline-secondary">View Products</a>
+                        <a href="<?= base_url('user/prod_page/')?><?= $category['cat_id']; ?>" class="btn btn-sm btn-outline-secondary">View Products</a>
                     </div>
                     </div>
                 </div>

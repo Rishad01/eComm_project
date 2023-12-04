@@ -6,7 +6,7 @@ class Id_model extends Model{
     public function getuserid()
     {
         $builder=$this->db->table('serial_no');
-        $builder->select('user')->limit(1);        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
+        $builder->select('user');        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
         $result=$builder->get();
         if(count($result->getRowArray())==1)
         {
@@ -42,7 +42,7 @@ class Id_model extends Model{
     public function getcatid()
     {
         $builder=$this->db->table('serial_no');
-        $builder->select('cat')->limit(1);        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
+        $builder->select('cat');        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
         $result=$builder->get();
         if(count($result->getRowArray())==1)
         {
@@ -76,7 +76,7 @@ class Id_model extends Model{
     public function getprodid()
     {
         $builder=$this->db->table('serial_no');
-        $builder->select('prod')->limit(1);        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
+        $builder->select('prod');        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
         $result=$builder->get();
         if(count($result->getRowArray())==1)
         {
@@ -94,6 +94,39 @@ class Id_model extends Model{
     {
         $builder=$this->db->table('serial_no');
         $builder->set('prod',$prod);
+        $builder->where('id',$id);
+        $builder->update();
+        if($this->db->affectedRows()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
+    public function gettransid()
+    {
+        $builder=$this->db->table('serial_no');
+        $builder->select('trans');        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
+        $result=$builder->get();
+        if(count($result->getRowArray())==1)
+        {
+            print_r( $result->getRowArray());
+            return $result->getRowArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function update_transid($trans,$id)
+    {
+        $builder=$this->db->table('serial_no');
+        $builder->set('trans',$trans);
         $builder->where('id',$id);
         $builder->update();
         if($this->db->affectedRows()==1)
