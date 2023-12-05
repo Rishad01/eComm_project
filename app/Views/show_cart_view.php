@@ -20,7 +20,7 @@
                     <h5><?= $detail['name']; ?></h5>
                   </tr>
                   <tr>
-                    <h4><?= $detail['sprice']; ?>/<?= $detail['unit']; ?></h4>
+                    <h4>&#8377;<?= $detail['sprice']; ?>/<?= $detail['unit']; ?></h4>
                   </tr>
                   <tr>
                     <td>

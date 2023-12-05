@@ -135,4 +135,16 @@ class User extends Controller
         }
     }
 
+    public function checkout()
+    {
+        $user_id=$this->session->get('logged_user');
+        $data=[
+            'controller'=>$this,
+            'items'=>$this->usermodel->cart_items($user_id),
+            'total'=>0
+        ];
+
+        return view('checkout_view',$data);
+    }
+
 }
