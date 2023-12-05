@@ -27,5 +27,17 @@ $routes->post('admin/status_change/(:any)', 'Admin::status_change/$1');
 $routes->get('user/category_page', 'User::category_page');
 $routes->get('user/prod_page/(:any)', 'User::prod_page/$1');
 $routes->post('user/cart/(:any)', 'User::cart/$1');
+$routes->get('homepage/logout', 'Homepage::logout');
+
+$routes->group('',['filter'=>'isLoggedIn'],function($routes){
+    $routes->get('user/profile/(:any)', 'User::profile/$1');
+});
+
+$routes->get('user/show_cart', 'User::show_cart');
+$routes->post('user/update_cart/(:any)', 'User::update_cart/$1');
+$routes->get('user/remove_cart/(:any)', 'User::remove_cart/$1');
+
+
+
 
 

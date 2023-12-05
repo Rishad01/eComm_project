@@ -99,8 +99,9 @@ class Homepage extends Controller
                 $hash=$user_id['pass'];
                 if (password_verify($cdata['pass'], $hash))
                 {
-                    echo 'welcome';
+                   
                     $this->session->set('logged_user',$user_id['user_id']);
+                    return redirect()->to(base_url('homepage'));
                 }
                 else
                 {
@@ -115,5 +116,13 @@ class Homepage extends Controller
             
         }
         return view('login_view');
+    }
+
+    public function logout()
+    {
+        session()->remove('logged_user');
+        session()->destroy();
+
+        return redirect()->to(base_url('homepage'));
     }
 }

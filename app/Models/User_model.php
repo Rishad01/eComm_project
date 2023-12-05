@@ -80,4 +80,69 @@ class User_model extends Model{
             return false;
         }
     }
+
+    public function cart_items($user_id)
+    {
+        $builder=$this->db->table('trans');
+        $builder->select('*');
+        $builder->where('user_id',$user_id);
+        $result=$builder->get();
+        if(count($result->getResultArray())>=1)
+        {
+            return $result->getResultArray();
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public function get_item_detail($prod_id)
+    {
+        $builder=$this->db->table('product');
+        $builder->select('name,sprice,image,unit');
+        $builder->where('prod_id',$prod_id);
+        $result=$builder->get();
+        if(count($result->getResultArray())>=1)
+        {
+            //print_r($result->getRowArray());
+            return $result->getRowArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function update_cart_qty($trans_id,$qty)
+    {
+        $builder=$this->db->table('trans');
+        $builder->set('qty',$qty);
+        $builder->where('trans_id',$trans_id);
+        $builder->update();
+        if($this->db->affectedRows()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function remove_cart_item($trans_id)
+    {
+        $builder=$this->db->table('trans');
+        $builder->where('trans_id',$trans_id);
+        $builder->delete();
+        if($this->db->affectedRows()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -11,7 +11,8 @@
 <body>
 
 <!---------------------------------------------------------------NAVIGATION BAR--------------------------------------------------------------->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<?= $this->include('partials/user_dashboard') ?>
+<!---<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +53,8 @@
         </div>
         </div>
     </div>
-    </nav>
-<!---------------------------------------------------------------CROUSEL--------------------------------------------------------------->
+    </nav>--->
+    <!---------------------------------------------------------------CROUSEL--------------------------------------------------------------->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
