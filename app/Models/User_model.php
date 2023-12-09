@@ -145,4 +145,29 @@ class User_model extends Model{
             return false;
         }
     }
+
+    public function user_addr($user_id)
+    {
+        $builder=$this->db->table('user');
+        $builder->select('addr');
+        $builder->where('user_id',$user_id);
+        $result=$builder->get();
+        return $result->getRowArray();
+    }
+
+    public function add_order($data)
+    {
+        $builder=$this->db->table('finalorder');
+        $builder->insert($data);
+        if($this->db->affectedRows()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 }

@@ -147,4 +147,51 @@ class User extends Controller
         return view('checkout_view',$data);
     }
 
+    public function get_addr()
+    {
+        $user_id=$this->session->get('logged_user');
+        $data=[
+            'address'=>$this->usermodel->user_addr($user_id)
+        ];
+
+        return $data['address'];
+    }
+
+    public function final_order($total)
+    {
+        $order_id_no=$this->idmodel->getorderid();
+        //print_r($trans_id_no['trans']);
+        if($this->request->getMethod()=='post')
+        {
+            $id = "ORDER"."-";
+            $myTime =  date("Ymd-his-");
+            $order_id=$id.$myTime.$order_id_no['ordr'];
+            $data=[
+            'del_addr'=>$this->request->getVar('del_addr'),
+            'total_amt'=>$total,
+            'order_id'=>$order_id,
+            'user_id'=>$this->session->get('logged_user')
+            ];
+
+            if($this->usermodel->add_order($data))
+            {
+                $order_id_no['ordr']=$order_id_no['ordr']+1;
+                if($this->idmodel->update_orderid($order_id_no['ordr'],'IDSERIAL'))
+                        {
+                            echo 'updated';
+                        }
+                        else
+                        {
+                            echo 'not updated';
+                        }
+                        echo 'Added';
+            }
+            else
+            {
+                echo 'Not Added';
+            }
+        }
+
+    }
+
 }

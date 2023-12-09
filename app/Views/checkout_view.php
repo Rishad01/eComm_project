@@ -37,9 +37,22 @@
 <?php endforeach ?>
 
     <h4>Total payable amount: &#8377;<?= $total ?></h4>
-    <a href="#"><button type="button" class="btn btn-primary">Place Order</button></a>
-    </tr>
-</table>
+    <br>
+    <h4>Delivery Address</h4>
+    <form action="<?= base_url('user/final_order/') ?><?= $total ?>" method="post" >
+    <div class="form">
+       
+        <?php $address=$controller->get_addr();?>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value=<?= $address['addr']; ?>>
+            <label class="form-check-label" for="flexRadioDefault1">
+                Default
+            </label>
+        <input type="text" name="del_addr" class="form-control" value=<?= $address['addr']; ?> >
+    </div>
+    <input class="btn btn-primary" type="submit" value="place order" name='submit'>
+    </form>
+    
+   
 <?php endif ?>
   </div>
   </div>

@@ -7,6 +7,48 @@
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
     crossorigin="anonymous">
     <title>Document</title>
+    <style>
+
+        body{
+            background-color: #FBF6EE;
+        }
+        
+        .y_choose_us{
+            background-color: white;
+            margin: 10px;
+            padding: 10px;
+            border-top-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        
+
+        #cat{
+            width: 100%;
+            box-shadow: 5px 5px 5px grey;
+        }
+
+        .row{
+            margin: 10px;
+        }
+
+        .catImages{
+        max-height: 250px; 
+        overflow: hidden;
+        transition: 0.75s;
+    }   
+
+        .catImages:hover { 
+        transform:scale(1.15);
+    }  
+    
+        .testimonial{
+            margin-top: 25px;
+        }
+
+    
+       
+    </style>
 </head>
 <body>
 
@@ -55,7 +97,7 @@
     </div>
     </nav>--->
     <!---------------------------------------------------------------CROUSEL--------------------------------------------------------------->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide shadow  mb-5 bg-body-tertiary rounded" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -91,7 +133,202 @@
     </button>
     </div>
 
+    
 
+    <!-----------------------------------------CATEGORIES PICTURE------------------------------------------->
+    <div class="container text-center">
+        <div class="row gy-5">
+            <div  class="col-md-4 align-self-center catImages">
+             <img id="cat" src="<?= base_url('assets/Prism Cement _ Champion.jpg') ?>" class="rounded" alt="...">
+            </div>
+            <div  class="col-md-4 align-self-center catImages">
+             <img id="cat" src="<?= base_url('assets/iron_rod2.jpg') ?>" class="rounded" alt="...">
+            </div>
+            <div  class="col-md-4 align-self-center catImages">
+             <img id="cat" src="<?= base_url('assets/sand.jpg') ?>" class="rounded" alt="...">
+            </div>
+        </div>
+        <div class="row gy-10 justify-content-center">
+            <div  class="col-4 catImages">
+             <a href="#" type="button" class="btn btn-dark">Explore more &rarr;</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-------------------------------------------TESTIMONIAL-------------------------------------------------->
+    <div class="container testimonial text-center">
+    <div class="row justify-content-center">
+    <div class="col-md-6 align-self-center">
+        <h4>
+            Listen What Are Customers Say about Us?
+        </h4>
+    </div>
+    </div>  
+
+    <div class="row justify-content-center">
+    <div class="col-md-8 align-self-center">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    </div>
+    </div>  
+    </div>  
+
+    <!--------------------------------------------Why choose us------------------------------------------------------>
+
+    <div class="y_choose_us bg-secondary bg-gradient bg-opacity-25 shadow  mb-5 bg-body-tertiary">
+        <h3>Why choose us?</h3>
+            <h5>Wide Range of Products</h5>
+
+            <p>Discover an extensive array of construction materials tailored to meet diverse project needs. 
+            Our wide range of high-quality products ensures you find the perfect solutions for any building endeavor.</p>
+
+
+
+            <h5>Quality Assurance</h5>
+
+            <p>Our commitment to excellence extends from sourcing to delivery, providing peace of mind and confidence in the superior quality of our construction materials.</p>
+
+
+            <h5>Competitive Pricing</h5>
+
+            <p>We pride ourselves on offering competitive pricing without compromising on quality.
+            Explore our extensive range of products knowing that you're getting the best value for your construction needs.</p>
+
+
+            <h5>Customer Reviews and Testimonials</h5>
+
+            <p>Discover why our customers trust us read glowing reviews and testimonials praising the durability, quality, and reliability of our construction materials. 
+            Join the community of satisfied builders who have chosen excellence with our products.</p>
+    </div>
+
+    <!--------------------------------------------FOOTER------------------------------------------------------>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+            <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+            <img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo">
+            </a>
+            <p class="text-body-secondary">© 2023</p>
+            </div>
+
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+            </div>
+
+            <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+            </div>
+
+            <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

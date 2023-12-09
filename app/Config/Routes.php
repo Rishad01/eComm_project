@@ -37,6 +37,8 @@ $routes->get('user/show_cart', 'User::show_cart');
 $routes->post('user/update_cart/(:any)', 'User::update_cart/$1');
 $routes->get('user/remove_cart/(:any)', 'User::remove_cart/$1');
 $routes->get('user/checkout', 'User::checkout');
+$routes->post('user/final_order/(:any)', 'User::final_order/$1');
+
 
 
 

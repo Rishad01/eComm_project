@@ -139,4 +139,38 @@ class Id_model extends Model{
         }
         
     }
+
+    public function getorderid()
+    {
+        $builder=$this->db->table('serial_no');
+        $builder->select('ordr');        //$row = $this->db->select("*")->limit(1)->order_by('id',"DESC")->get("table name")->row();
+        $result=$builder->get();
+        if(count($result->getRowArray())==1)
+        {
+            print_r( $result->getRowArray());
+            return $result->getRowArray();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function update_orderid($order,$id)
+    {
+        $builder=$this->db->table('serial_no');
+        $builder->set('ordr',$order);
+        $builder->where('id',$id);
+        $builder->update();
+        if($this->db->affectedRows()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
 }
