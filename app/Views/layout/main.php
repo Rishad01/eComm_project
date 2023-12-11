@@ -8,12 +8,7 @@
     crossorigin="anonymous">
     <title>Document</title>
     <style>
-    body{
-            background-color: #FBF6EE;
-        }
-
-        
-
+        <?= $this->renderSection('style') ?>
     </style>
 </head>
 <body>

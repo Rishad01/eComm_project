@@ -35,10 +35,10 @@
         .catImages{
         max-height: 250px; 
         overflow: hidden;
-        transition: 0.75s;
     }   
 
         .catImages:hover { 
+        transition: 0.75s;
         transform:scale(1.15);
     }  
     

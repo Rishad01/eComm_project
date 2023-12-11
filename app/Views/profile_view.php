@@ -1,7 +1,7 @@
 <?php $validation= \Config\Services::validation()?>
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
-<?= $this->include('partials/admin_dashboard') ?>
+<?= $this->include('partials/user_dashboard') ?>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4 ">

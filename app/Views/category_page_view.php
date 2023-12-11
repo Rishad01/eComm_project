@@ -1,4 +1,17 @@
 <?= $this->extend('layout/main') ?>
+<?= $this->section('style') ?>
+body{
+            background-color: #FBF6EE;
+        }
+.card:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+a:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+<?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/user_dashboard') ?>
 
@@ -10,12 +23,12 @@
             <?php foreach($categories as $category): ?>
                 <div class="col">
                 <div class="card shadow-sm">
-                <img src="<?= $category['image']; ?>" alt="category">
-                <div class="card-body">
-                    <p class="card-text"><?= $category['name']; ?></p>
+                <img class="rounded" src="<?= $category['image']; ?>" alt="category">
+                <div class="card-body ">
+                    <h4 class="card-text"><?= $category['name']; ?></h4>
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a href="<?= base_url('user/prod_page/')?><?= $category['cat_id']; ?>" class="btn btn-sm btn-outline-secondary">View Products</a>
+                        <a href="<?= base_url('user/prod_page/')?><?= $category['cat_id']; ?>" class="btn btn-dark ">View Products</a>
                     </div>
                     </div>
                 </div>

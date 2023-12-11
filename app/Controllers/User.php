@@ -45,11 +45,22 @@ class User extends Controller
         $data=[
             'products'=>$this->usermodel->get_product($cat_id)
         ];
+        if($data['products'])
+        {
         return view('prod_page_view',$data);
+        }
+        else
+        {
+            echo 'NO PRODUCT ADDED TO THIS CATEGORY';
+        }
     }
 
     public function cart($prod_id)
     {
+        if(!session()->has('logged_user'));
+        {
+        return redirect()->to(base_url('homepage/login'));
+        }
         $trans_id_no=$this->idmodel->gettransid();
         print_r($trans_id_no['trans']);
         $prod_detail=$this->usermodel->prod_detail($prod_id);

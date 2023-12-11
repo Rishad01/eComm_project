@@ -1,6 +1,9 @@
 <?php $validation= \Config\Services::validation()?>
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
+<?= $this->section('style') ?>
+<?= $this->include('partials/input_style') ?>
+<?= $this->endsection() ?>
 <?= $this->include('partials/user_dashboard') ?>
 <div class="container">
   <div class="row justify-content-center">
@@ -27,7 +30,7 @@
                       <form action="<?= base_url('user/update_cart/') ?><?= $item['trans_id']; ?>" method="post">
                         <div class="form">
                           <label>Quantity</label>
-                          <input type="number" name="qty" class="form-control" placeholder="<?= $item['qty']; ?>" >
+                          <input type="number" name="qty" class="form-control shadow-none" placeholder="<?= $item['qty']; ?>" >
                         </div>
 
                         <input class="btn btn-primary" type="submit" value="Update" name='submit'>

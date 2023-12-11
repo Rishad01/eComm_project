@@ -4,20 +4,19 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand" href="#"><img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
                 </button>
         
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Profile</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Product Categories</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Product</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Track Order</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Profile</a></li>
         </ul>
 
         <div class="d-flex">
-        <ul class="nav-item">    
-        <a href="<?= base_url('user/show_cart') ?>" class="nav-link px-2 link-body-emphasis">Cart</a></li>
-        <a href="<?= base_url('homepage/logout') ?>" class="nav-link px-2 link-body-emphasis">Log Out</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+        <li class="nav-item"><a href="<?= base_url('user/show_cart') ?>" class="nav-link px-2 link-body-emphasis">Cart</a></li>
+        <li class="nav-item"><a href="<?= base_url('homepage/logout') ?>" class="nav-link px-2 link-body-emphasis">Log Out</a></li>
         </ul>
         </div>
         </div>
@@ -27,13 +26,15 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
                         </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="<?= base_url('homepage') ?>">Home</a>
+                </li>
+
+                <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="<?= base_url('user/category_page') ?>">Products</a>
                 </li>
                     
                     <li class="nav-item dropdown">
@@ -53,15 +54,11 @@
                         </li>
                 </ul>
                 <div class="d-flex">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link" href="homepage/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="homepage/signup">Signup</a>
-                    </li>
-                </ul>
-                </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+        <li class="nav-item"><a href="<?= base_url('homepage/login') ?>" class="nav-link px-2 link-body-emphasis">Login</a></li>
+        <li class="nav-item"><a href="<?= base_url('homepage/signup') ?>" class="nav-link px-2 link-body-emphasis">Sign Up</a></li>
+        </ul>
+        </div>
                 </div>
             </div>
             </nav>
