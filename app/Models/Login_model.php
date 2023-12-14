@@ -9,7 +9,6 @@ class Login_model extends Model{
         $builder->select('user_id,pass');
         $builder->where('email', $email);
         $result=$builder->get();
-        print_r($result->getRowArray());
         if(count($result->getResultArray())==1)
         {
             //print_r($result->getRowArray());

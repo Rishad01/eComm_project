@@ -18,17 +18,21 @@ class User extends Controller
         $this->idmodel=new Id_model();
         $this->session= \Config\Services::session();
     }
-    public function profile($user_id)
+    public function profile()
     {
-        if(!session()->has('logged_user'));
+        print_r($this->session->get('logged_user'));
+        if(session()->has('logged_user'));
         {
-        return redirect()->to(base_url('homepage/login'));
-        }
+            $user_id=$this->session->get('logged_user');
         $user=[
             'data'=>$this->usermodel->get_user($user_id)
         ];
-        print_r($user);
+        //print_r($user);
         return view('profile_view',$user);
+        }
+        return redirect()->to(base_url('homepage/login'));
+
+        
     }
 
     public function category_page()

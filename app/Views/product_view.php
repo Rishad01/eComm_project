@@ -28,7 +28,7 @@
                 <td><?= $prod['cprice']; ?></td>
                 <td><?= $prod['qty']; ?></td>
                 <td>
-                    <a href="<?= base_url('admin/edit_prod/') ?><?=$prod["prod_id"];?>"><button type="button" class="btn btn-primary">edit</button></a>
+                    <a href="<?= base_url('admin/edit_prod/') ?><?=$prod["prod_id"];?>"><button type="button" class="btn btn-dark">edit</button></a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -37,41 +37,55 @@
 
     <h1 class="h3 mb-3 fw-normal">Add Products</h1>
      <form action="<?= base_url('admin/product');?>" enctype="multipart/form-data" method="post">
-      
+     <div class="container">
+      <div class="row gy-2">
+         <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="product" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="product" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Product Name</label>
      </div>
+     </div>
 
+     <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="sprice" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="sprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Selling Price</label>
      </div>
+     </div>
 
+     <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="cprice" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="cprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Cost Price</label>
      </div>
+     </div>
 
+     <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="descr" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="descr" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Description</label>
      </div>
+     </div>
 
+     <div class="col-12">
      <div class="form-floating">
-        <input type="number" name="qty" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="number" name="qty" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Quantity</label>
      </div>
-
-     <div class="form-floating">
-        <input type="text" name="unit" class="form-control" id="floatingInput" placeholder="bags,kg,etc">
-        <label for="floatingInput">Unit</label>
      </div>
 
-     <div>
+     <div class="col-12">
+     <div class="form-floating">
+        <input type="text" name="unit" class="form-control shadow-none" id="floatingInput" placeholder="bags,kg,etc">
+        <label for="floatingInput">Unit</label>
+     </div>
+     </div>
+
+     <div class="col-12">
+     <div class="form">
         <p>Enter category</p>
         <?php if($data): ?>
-            <select name="cat_id" class="form-select" aria-label="Default select example">
+            <select name="cat_id" class="form-select form-control shadow-none" aria-label="Default select example">
             <option selected>Choose Category</option>
             <?php foreach($data as $cat): ?>
                 <option value="<?= $cat['cat_id'] ?>"><?= $cat['name'] ?></option>
@@ -79,15 +93,21 @@
             </select>
         <?php endif ?>
      </div>
+     </div>
 
+     <div class="col-12">
      <div class="mb-3">
         <label for="formFile" class="form-label">Add image of Product</label>
         <input class="form-control" type="file" name="pic">
         <span class="text-danger"><?= $validation->getError('pic'); ?></span>
       </div>
+      </div>
 
-      
-      <input class="btn btn-primary" type="submit" value="Add" name='submit'>
+      <div class="col-12">
+      <input class="btn btn-dark" type="submit" value="Add" name='submit'>
+      </div>
+      </div>
+      </div>
      </form>
   </div>
   </div>

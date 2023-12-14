@@ -1,5 +1,21 @@
 <?php $validation= \Config\Services::validation()?>
 <?= $this->extend('layout/main') ?>
+<?= $this->section('script') ?>
+<script>
+function text(x){
+  if(x==0)
+  {
+    document.getElementById("old_addr").style.display="block";
+    document.getElementById("new_addr").style.display="none";
+  }
+  else{
+    document.getElementById("new_addr").style.display="block";
+    document.getElementById("old_addr").style.display="none";
+  }
+  return;
+}
+</script>
+<?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/user_dashboard') ?>
 <div class="container">
@@ -17,18 +33,18 @@
       <td>
         <table class="table">
           <tr>
-            <h5><?= $detail['name']; ?></h5>
+            <h4><?= $detail['name']; ?></h4>
           </tr>
           <tr>
-            <h4>&#8377;<?= $detail['sprice']; ?>/<?= $detail['unit']; ?></h4>
+            <h5>&#8377;<?= $detail['sprice']; ?>/<?= $detail['unit']; ?></h5>
           </tr>
           <tr>
-          <h4>Quantity: <?=$item['qty']; ?></h4>
+          <h5>Quantity: <?=$item['qty']; ?></h5>
           </tr>
         </table>
       </td>
       <td>
-        <h4>&#8377;<?= $item['qty']*$detail['sprice']; ?></h4>
+        <h5>&#8377;<?= $item['qty']*$detail['sprice']; ?></h5>
         <?php $total=$item['qty']*$detail['sprice']+$total; ?>
       </td>
     </tr>
@@ -36,21 +52,46 @@
     
 <?php endforeach ?>
 
+<div class="container">
+<div class="row gy-2">
+  <div class="col-12">
     <h4>Total payable amount: &#8377;<?= $total ?></h4>
-    <br>
+  </div>
+  <div class="col-12">
     <h4>Delivery Address</h4>
+    </div>
     <form action="<?= base_url('user/final_order/') ?><?= $total ?>" method="post" >
     <div class="form">
-       
+    <div class="container">
+    <div class="row gy-2">
         <?php $address=$controller->get_addr();?>
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value=<?= $address['addr']; ?>>
-            <label class="form-check-label" for="flexRadioDefault1">
-                Default
-            </label>
-        <input type="text" name="del_addr" class="form-control" value=<?= $address['addr']; ?> >
-    </div>
-    <input class="btn btn-primary" type="submit" value="place order" name='submit'>
-    </form>
+        <div class="col-12">
+          <input class="form-check-input" type="radio" name="del_addr" id="flexRadioDefault1" value=<?= $address['addr'];?> onclick="text(0)" >
+          <label class="form-check-label" for="flexRadioDefault1">Default</label>
+        </div>
+
+        <div class="col-12">
+        <div id="old_addr" style="display: none;"><?= $address['addr'];?></div>
+        </div>
+
+        <div class="col-12">
+          <input class="form-check-input" type="radio" name="del_addr" id="flexRadioDefault1" onclick="text(1)">
+          <label class="form-check-label" for="flexRadioDefault1">New Address</label>
+        </div>
+
+        <div class="col-12">
+        <textarea  id="new_addr" type="text" name="del_addr" class="form-control" style="display: none" value=<?= $address['addr']; ?> ></textarea>
+        </div>
+
+        <div class="col-3 align-self-center">
+        <input class="btn btn-dark" type="submit" value="place order" name='submit'>
+        </div>
+        </div>
+        </div>
+        </div>
+        </form>
+      </div>
+      </div>
     
    
 <?php endif ?>

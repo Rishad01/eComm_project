@@ -99,8 +99,8 @@ class Homepage extends Controller
                 $hash=$user_id['pass'];
                 if (password_verify($cdata['pass'], $hash))
                 {
-                   
                     $this->session->set('logged_user',$user_id['user_id']);
+                    //print_r($this->session->get('logged_user'));
                     return redirect()->to(base_url('homepage'));
                 }
                 else

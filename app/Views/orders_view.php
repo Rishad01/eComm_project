@@ -1,7 +1,16 @@
 <?php $validation= \Config\Services::validation()?>
 <?= $this->extend('layout/main') ?>
 <?= $this->section('style') ?>
-
+input{
+  margin:10px;
+}
+body{
+            background-color: #FBF6EE;
+        }
+container{
+  background-color: #FBF6EE;
+}
+<?= $this->include('partials/input_style') ?>
 <?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/admin_dashboard') ?>
@@ -28,8 +37,7 @@
                         <option value="delivered">Delivered</option>
                         <option value="not delivered">Not Delivered</option>
                     </select>
-
-                    <input class="btn btn-primary" type="submit" value="Update" name='submit'>
+                    <input id="input_button" class="btn btn-dark" type="submit" value="Update" name='submit'>
                     </form>
                 </td>
             </tr>

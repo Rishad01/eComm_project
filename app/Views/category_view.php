@@ -7,42 +7,52 @@
 <?= $this->include('partials/admin_dashboard') ?>
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-4 ">
+    <div class="col">
 
     
 <?php if($data): ?>
-    <h4>Categories</h4>
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Image</th>
-    </tr>
+    <h1 class="h4 mb-3 fw-normal">Categories</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <?php foreach($data as $cat): ?>
-        <tr>
-            <td><?= $cat['name']; ?></td>
-            <td><img height="50px" width="50px" src="<?= $cat['image']; ?>"</td>
-        </tr>
+        <div class="col">
+                <div class="card shadow-sm">
+                <img class="rounded" src="<?= $cat['image']; ?>" alt="category">
+                <div class="card-body ">
+                    <h4 class="card-text"><?= $cat['name']; ?></h4>
+                </div>
+                </div>
+        </div>
     <?php endforeach; ?>
-</table>
+</div>
 <?php endif; ?>
 
+<hr>
 
-    <h1 class="h3 mb-3 fw-normal">Add Categories</h1>
+    <h1 class="h4 mb-3 fw-normal">Add Categories</h1>
+        
      <form action="<?= base_url('admin/category');?>" enctype="multipart/form-data" method="post">
-      
+     <div class="container">
+     <div class="row gy-2">
+      <div class="col-12">
       <div class="form-floating">
-        <input type="text" name="category" class="form-control" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="category" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Category Name</label>
-     </div>
-
-     <div class="mb-3">
-        <label for="formFile" class="form-label">Add image of category</label>
-        <input class="form-control" type="file" name="pic">
-        <span class="text-danger"><?= $validation->getError('pic'); ?></span>
       </div>
-      
-      <input class="btn btn-primary" type="submit" value="Add" name='submit'>
+      </div>
+
+    <div class="col-12"> 
+        <input type="file" name="pic" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <span class="text-danger"><?= $validation->getError('pic'); ?></span>
+    </div>
+      <div class="col-6 align-self-end">
+      <div class="btn-group">
+      <input class="btn btn-dark" type="submit" value="Add" name='submit'>
+      </div>
+      </div>
+      </div>
+      </div>
      </form>
+     
     </div>
 </div>
 </div>
