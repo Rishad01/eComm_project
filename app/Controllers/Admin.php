@@ -13,6 +13,7 @@ class Admin extends Controller{
     {
         $this->adminmodel=new Admin_model();
         $this->idmodel=new Id_model();
+        helper(['form']); 
     }
 
     public function index()
@@ -21,66 +22,95 @@ class Admin extends Controller{
     }
     public function category()
     {
+        $rules=[
+            'category'=>'required',
+            'pic'=>'required'
+        ];
         $catg=['data'=>$this->adminmodel->loaddata()];
         $cat_id_no=$this->idmodel->getcatid();
         //print_r($data);
-        if($this->request->getMethod()=='post')
+        if($this->request->getMethod()=='get')
         {
-            $file=$this->request->getFile('pic');
-
-            if($file->isValid() && !$file->hasMoved())
+            return view('category_view',$catg);
+        }
+        else if($this->request->getMethod()=='post')
+        {
+            if($this->validate($rules))
             {
-                if($file->move(FCPATH.'category',$file->getRandomName()))
-                {
+                $file=$this->request->getFile('pic');
 
-                    $path=base_url().'category/'.$file->getName();
-                    $id = "CAT"."-";
-                    $myTime =  date("Ymd-his-");
-                    $cat_id=$id.$myTime.$cat_id_no['cat'];
-                    print_r($cat_id);
-                    $cdata=[
-                        'cat_id'=>$cat_id,
-                        'name'=>$this->request->getVar('category'),
-                        'image'=>$path
-                    ];
-                    $status=$this->adminmodel->addcat($cdata);
-                    if($status)
+                if($file->isValid() && !$file->hasMoved())
+                {
+                    if($file->move(FCPATH.'category',$file->getRandomName()))
                     {
-                        $cat_id_no['cat']=$cat_id_no['cat']+1;
-                        if($this->idmodel->update_catid($cat_id_no['cat'],'IDSERIAL'))
+
+                        $path=base_url().'category/'.$file->getName();
+                        $id = "CAT"."-";
+                        $myTime =  date("Ymd-his-");
+                        $cat_id=$id.$myTime.$cat_id_no['cat'];
+                        print_r($cat_id);
+                        $cdata=[
+                            'cat_id'=>$cat_id,
+                            'name'=>$this->request->getVar('category'),
+                            'image'=>$path
+                        ];
+                        $status=$this->adminmodel->addcat($cdata);
+                        if($status)
                         {
-                            echo 'updated';
+                            $cat_id_no['cat']=$cat_id_no['cat']+1;
+                            $this->idmodel->update_catid($cat_id_no['cat'],'IDSERIAL');
+                            
+                            $catg['success']='New Category added!';
+                            
                         }
                         else
                         {
-                            echo 'not updated';
+                            $catg['error']='New Category not added!';
                         }
-                        echo 'Added';
                     }
-                    else{
-                        echo 'not added';
-                    }
+                    else
+                    {
+                    print_r($file->getErrorString());
+                    } 
                 }
-                else
-                {
-                print_r($file->getErrorString());
-                }                
             }
+            else
+            {
+                $catg['validation']=$this->validator;
+            }               
         }
         return view('category_view',$catg);
     }
+    
 
     public function product()
     {
+        $rules=[
+            'product'=>'required',
+            'sprice'=>'required',
+            'cprice'=>'required',
+            'descr'=>'required',
+            'qty'=>'required',
+            'unit'=>'required',
+            'cat_id'=>'required',
+            'pic'=>'required'
+        ];
         $catg=[
             'data'=>$this->adminmodel->loaddata(),
             'proddata'=>$this->adminmodel->loadprod()
         ];
 
+        if($this->request->getMethod()=='get')
+        {
+            return view('product_view',$catg);
+        }
+
         $prod_id_no=$this->idmodel->getprodid();
         
         if($this->request->getMethod()=='post')
         {
+            if($this->validate($rules))
+            {
             $file=$this->request->getFile('pic');
 
             if($file->isValid() && !$file->hasMoved())
@@ -109,18 +139,13 @@ class Admin extends Controller{
                     if($status)
                     {
                         $prod_id_no['prod']=$prod_id_no['prod']+1;
-                        if($this->idmodel->update_prodid($prod_id_no['prod'],'IDSERIAL'))
-                        {
-                            echo 'updated';
-                        }
-                        else
-                        {
-                            echo 'not updated';
-                        }
-                        echo 'Added';
+                        $this->idmodel->update_prodid($prod_id_no['prod'],'IDSERIAL');
+                        
+                        $catg['success']='Product is added!';
                     }
-                    else{
-                        echo 'not added';
+                    else
+                    {
+                        $catg['error']='Product is not added!';
                     }
                 }
                 else
@@ -128,41 +153,67 @@ class Admin extends Controller{
                 print_r($file->getErrorString());
                 }                
             }
+            }
         }
         return view('product_view',$catg);
     }
 
     public function edit_prod($prod_id)
     {
-        print_r($prod_id);
-        if($this->request->getMethod()=='post')
+        $data=['prod_id'=>$prod_id];
+        $rules=[
+            'qty'=>'required'
+        ];
+        //print_r($prod_id);
+        if($this->request->getMethod()=='get')
         {
+            return view('edit_prod_view',$data);
+        }
+        else if($this->request->getMethod()=='post')
+        {
+            if($this->validate($rules))
+            {
             $qty=$this->request->getVar('qty');
-            if($this->adminmodel->edit_prod($qty,$prod_id))
+            if($this->adminmodel->edit_prod_model($qty,$prod_id))
             {
                 return redirect()->to(base_url('admin/product'));
             }
+            }
+            else
+            {
+                $data['validation']=$this->validator;
+            }
         }
-        return view('edit_prod_view');
+        return view('edit_prod_view',$data);
     }
 
     public function service_area()
     {
+        $rules=[
+            'pincode'=>'required'
+        ];
         $data=[
             'pincode_list'=>$this->adminmodel->pincode_list()
         ];
         if($this->request->getMethod()=='post')
         {
-            $cdata=[
-            'pincode'=>$this->request->getVar('pincode')
-            ];
-            if($this->adminmodel->add_pincode($cdata))
+            if($this->validate($rules))
             {
-                echo 'added';
+                $cdata=[
+                'pincode'=>$this->request->getVar('pincode')
+                ];
+                if($this->adminmodel->add_pincode($cdata))
+                {
+                    echo 'added';
+                }
+                else
+                {
+                    echo 'not added';
+                }
             }
             else
             {
-                echo 'not added';
+                $data['validation']=$this->validator;
             }
         }
         return view('service_area_view',$data);

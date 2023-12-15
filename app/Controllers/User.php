@@ -17,6 +17,7 @@ class User extends Controller
         $this->usermodel=new User_model();
         $this->idmodel=new Id_model();
         $this->session= \Config\Services::session();
+        helper(['form']); 
     }
     public function profile()
     {

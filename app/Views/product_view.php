@@ -7,6 +7,12 @@
 <?= $this->include('partials/admin_dashboard') ?>
 <div class="container">
   <div class="row justify-content-center">
+  <?php if(isset($error)): ?>
+      <div class="alert alert-danger"><?= $error; ?></div>
+     <?php endif;?>
+     <?php if(isset($success)): ?>
+      <div class="alert alert-success"><?= $success; ?></div>
+     <?php endif;?>
   <div class="col-md-4 ">
 
   <?php if($proddata): ?>
@@ -27,6 +33,7 @@
                 <td><?= $prod['sprice']; ?></td>
                 <td><?= $prod['cprice']; ?></td>
                 <td><?= $prod['qty']; ?></td>
+                <td><?=$prod["prod_id"];?></td>
                 <td>
                     <a href="<?= base_url('admin/edit_prod/') ?><?=$prod["prod_id"];?>"><button type="button" class="btn btn-dark">edit</button></a>
                 </td>
@@ -41,36 +48,46 @@
       <div class="row gy-2">
          <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="product" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="product" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc" value=<?= set_value('product') ?>>
         <label for="floatingInput">Product Name</label>
+        <span class="text-danger"><?= $validation->getError('product'); ?></span>
+
      </div>
      </div>
 
      <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="sprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="sprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc" value=<?= set_value('sprice') ?>>
         <label for="floatingInput">Selling Price</label>
+        <span class="text-danger"><?= $validation->getError('sprice'); ?></span>
+
      </div>
      </div>
 
      <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="cprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="cprice" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc" value=<?= set_value('cprice') ?>>
         <label for="floatingInput">Cost Price</label>
+        <span class="text-danger"><?= $validation->getError('cprice'); ?></span>
+
      </div>
      </div>
 
      <div class="col-12">
      <div class="form-floating">
-        <input type="text" name="descr" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="text" name="descr" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc" value=<?= set_value('descr') ?>>
         <label for="floatingInput">Description</label>
+        <span class="text-danger"><?= $validation->getError('descr'); ?></span>
+
      </div>
      </div>
 
      <div class="col-12">
      <div class="form-floating">
-        <input type="number" name="qty" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
+        <input type="number" name="qty" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc" >
         <label for="floatingInput">Quantity</label>
+        <span class="text-danger"><?= $validation->getError('qty'); ?></span>
+
      </div>
      </div>
 
@@ -78,6 +95,8 @@
      <div class="form-floating">
         <input type="text" name="unit" class="form-control shadow-none" id="floatingInput" placeholder="bags,kg,etc">
         <label for="floatingInput">Unit</label>
+        <span class="text-danger"><?= $validation->getError('unit'); ?></span>
+
      </div>
      </div>
 
@@ -91,6 +110,7 @@
                 <option value="<?= $cat['cat_id'] ?>"><?= $cat['name'] ?></option>
             <?php endforeach ?>
             </select>
+            <span class="text-danger"><?= $validation->getError('cat_id'); ?></span>
         <?php endif ?>
      </div>
      </div>

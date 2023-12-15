@@ -1,44 +1,44 @@
 <header class="p-3 mb-3 border-bottom">
 <?php if(session()->has("logged_user")): ?>
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <div class="container-fluid">
+      <div class=" navbar navbar-expand-lg d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand" href="#"><img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 </button>
         
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="<?= base_url('user/category_page') ?>" class="nav-link px-2 link-secondary">Product</a></li>
-          <li><a href="#" class="nav-link px-2 link-secondary">Track Order</a></li>
-          <li><a href="<?= base_url('user/profile') ?>" class="nav-link px-2 link-secondary">Profile</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Home</a></li>
+          <li><a href="<?= base_url('user/category_page') ?>" class="nav-link px-2 link-body-emphasis">Product</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Track Order</a></li>
+          <li><a href="<?= base_url('user/profile') ?>" class="nav-link px-2 link-body-emphasis">Profile</a></li>
         </ul>
 
         <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
-        <li class="nav-item"><a href="<?= base_url('user/show_cart') ?>" class="nav-link px-2 link-secondary">Cart</a></li>
-        <li class="nav-item"><a href="<?= base_url('homepage/logout') ?>" class="nav-link px-2 link-secondary">Log Out</a></li>
+        <li class="nav-item"><a href="<?= base_url('user/show_cart') ?>" class="nav-link px-2 link-body-emphasis">Cart</a></li>
+        <li class="nav-item"><a href="<?= base_url('homepage/logout') ?>" class="nav-link px-2 link-body-emphasis">Log Out</a></li>
         </ul>
         </div>
         </div>
     </div>
         <?php else: ?>
-            <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
+            <div class=" navbar navbar-expand-lg d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a class="navbar-brand" href="#"><img height="50px" width="50px" src="<?= base_url('assets/logo.svg'); ?>" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         </button>
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?= base_url('homepage') ?>">Home</a>
+                        <a class="nav-link px-2 link-body-emphasis" aria-current="page" href="<?= base_url('homepage') ?>">Home</a>
                 </li>
 
                 <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?= base_url('user/category_page') ?>">Products</a>
+                        <a class="nav-link px-2 link-body-emphasis" aria-current="page" href="<?= base_url('user/category_page') ?>">Products</a>
                 </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link px-2 link-body-emphasis dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Company
                         </a>
                         <ul class="dropdown-menu">

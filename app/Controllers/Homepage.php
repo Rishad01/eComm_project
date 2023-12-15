@@ -19,6 +19,7 @@ class Homepage extends Controller
         $this->loginmodel=new Login_model();
         $this->idmodel=new Id_model();
         $this->session= \Config\Services::session();
+        helper(['form']); 
     }
     public function index()
     {
@@ -36,7 +37,7 @@ class Homepage extends Controller
             'mobile' => 'required|numeric|exact_length[10]',
             'email' => 'required|valid_email',
             'pass' => 'required',
-            'cpass' => 'required|matches[password]'
+            'cpass' => 'required|matches[pass]'
         ];
         if($this->request->getMethod() == 'get')
         {
@@ -44,6 +45,8 @@ class Homepage extends Controller
         }
         else if($this->request->getMethod()=='post')
         {
+            if($this->validate($rules))
+            {
                 $id = "ID"."-";
                 $myTime =  date("Ymd-his-");
                 $user_id=$id.$myTime.$id_no['user'];
@@ -59,23 +62,26 @@ class Homepage extends Controller
 
                 if($this->signupmodel->savedata($cdata))
                 {
-                if($this->idmodel->update_userid($id_no['user']+1,'IDSERIAL'))
-                {
-                    echo 'updated';
+                $save=$this->idmodel->update_userid($id_no['user']+1,'IDSERIAL');
+                    
+                $data['success']='You have registered successfully';
                 }
                 else
                 {
-                    echo 'not updated';
+                    $data['error']='Your e-mail id already exists!';
                 }
-                    echo 'registered';
-                }
-           
+            }
+            else
+            {
+                $data['validation']=$this->validator;
+            }
+            return view('signup_view',$data);
         }
-        return view('signup_view');
     }
 
     public function login()
     {
+        $data=[];
         $rules=[
             
             'email' => 'required|valid_email',
@@ -88,34 +94,40 @@ class Homepage extends Controller
         }
         else if($this->request->getMethod()=='post')
         {
-            $cdata=[
-                
-                'email' => $this->request->getVar('email',FILTER_SANITIZE_STRING),
-                'pass' => $this->request->getVar('pass')
-            ];
-            $user_id=$this->loginmodel->check($cdata['email']);
-            if($user_id)
+            if($this->validate($rules))
             {
-                $hash=$user_id['pass'];
-                if (password_verify($cdata['pass'], $hash))
+                $cdata=[
+                    
+                    'email' => $this->request->getVar('email',FILTER_SANITIZE_STRING),
+                    'pass' => $this->request->getVar('pass')
+                ];
+                $user_id=$this->loginmodel->check($cdata['email']);
+                if($user_id)
                 {
-                    $this->session->set('logged_user',$user_id['user_id']);
-                    //print_r($this->session->get('logged_user'));
-                    return redirect()->to(base_url('homepage'));
+                    $hash=$user_id['pass'];
+                    if (password_verify($cdata['pass'], $hash))
+                    {
+                        $this->session->set('logged_user',$user_id['user_id']);
+                        //print_r($this->session->get('logged_user'));
+                        return redirect()->to(base_url('homepage'));
+                    }
+                    else
+                    {
+                        $data['wrongpass']='wrong password';
+                    }
+
                 }
                 else
                 {
-                    echo 'wrong password';
+                    $data['error']='You are not registered user';
                 }
-
             }
             else
             {
-                echo 'u r not registered';
+                $data['validation']=$this->validator;
             }
-            
+            return view('login_view',$data);
         }
-        return view('login_view');
     }
 
     public function logout()

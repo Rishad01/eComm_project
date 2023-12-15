@@ -7,6 +7,12 @@
 <?= $this->include('partials/admin_dashboard') ?>
 <div class="container">
     <div class="row justify-content-center">
+    <?php if(isset($error)): ?>
+      <div class="alert alert-danger"><?= $error; ?></div>
+     <?php endif;?>
+     <?php if(isset($success)): ?>
+      <div class="alert alert-success"><?= $success; ?></div>
+     <?php endif;?>
     <div class="col">
 
     
@@ -37,6 +43,8 @@
       <div class="form-floating">
         <input type="text" name="category" class="form-control shadow-none" id="floatingInput" placeholder="cement,iron rod,etc">
         <label for="floatingInput">Category Name</label>
+        <span class="text-danger"><?= $validation->getError('category'); ?></span>
+
       </div>
       </div>
 

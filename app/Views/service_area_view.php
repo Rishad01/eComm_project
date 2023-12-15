@@ -34,6 +34,7 @@ body{
             <div class="row gy-2">
             <div class="col-12">
                 <input type="text" name="pincode" class="form-control shadow-none" id="floatingInput" placeholder="PINCODE">
+                <span class="text-danger"><?= $validation->getError('pincode'); ?></span>
             </div>
             <div class="col-12">
                 <input class="btn btn-dark" type="submit" value="Add" name='submit'>

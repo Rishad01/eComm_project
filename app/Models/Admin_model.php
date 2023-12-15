@@ -61,11 +61,12 @@ class Admin_model extends Model{
         }
     }
 
-    public function edit_prod($qty,$prod_id)
+    public function edit_prod_model($qty,$prod_id)
     {
         $builder=$this->db->table('product');
-        $builder->select('qty');
+        $builder->set('qty',$qty);
         $builder->where('prod_id',$prod_id);
+        $builder->update();
         $result=$builder->get();
         print_r($result);
         return true;
