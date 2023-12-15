@@ -192,14 +192,14 @@ class User extends Controller
             {
                 $order_id_no['ordr']=$order_id_no['ordr']+1;
                 if($this->idmodel->update_orderid($order_id_no['ordr'],'IDSERIAL'))
-                        {
-                            echo 'updated';
-                        }
-                        else
-                        {
-                            echo 'not updated';
-                        }
-                        echo 'Added';
+                    {
+                        echo 'updated';
+                    }
+                    else
+                    {
+                        echo 'not updated';
+                    }
+                    echo 'Added';
             }
             else
             {

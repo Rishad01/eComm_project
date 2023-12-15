@@ -55,7 +55,11 @@ function text(x){
 <div class="container">
 <div class="row gy-2">
   <div class="col-12">
-    <h4>Total payable amount: &#8377;<?= $total ?></h4>
+    <h4>Total amount:&#8377;<?= $total ?></h4>
+    <?php $tax=0.18*$total; ?>
+    <h4>GST : &#8377;<?= $tax ?>
+    <hr>
+    <h4>Total payable amount: &#8377;<?= $total+$tax; ?></h4>
   </div>
   <div class="col-12">
     <h4>Delivery Address</h4>
