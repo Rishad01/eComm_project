@@ -7,7 +7,7 @@
                 </button>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Home</a></li>
           <li><a href="<?= base_url('admin/category') ?>" class="nav-link px-2 link-body-emphasis">Categories</a></li>
           <li><a href="<?= base_url('admin/product') ?>" class="nav-link px-2 link-body-emphasis">Products</a></li>
           <li><a href="<?= base_url('admin/orders') ?>" class="nav-link px-2 link-body-emphasis">Orders</a></li>

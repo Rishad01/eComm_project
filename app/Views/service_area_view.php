@@ -4,7 +4,7 @@
 body{
             background-color: #FBF6EE;
         }
-<?= $this->include('partials/input_style') ?>
+
 <?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/admin_dashboard') ?>
@@ -12,18 +12,23 @@ body{
   <div class="row justify-content-center">
   <div class="col-md-4 ">
   <?php if($pincode_list): ?>
-     <table class="table">
-        <tr>
-            <th>We deliver at pincodes mentioned below!</th>
-        </tr>
+     
+    <div class="container text-center"></div>
+    <div class="row align-content-center justify-content-center">
+            <div class="col-12">
+                <h1 class="h3 mb-3 fw-normal">We deliver at pincodes mentioned below!</h1>
+            </div>
         <?php foreach($pincode_list as $pincode): ?>
-            <tr>
-                <td><?= $pincode['pincode']; ?></td>
-            </tr>
+            <div class="col-10 align-self-center">
+                <h5><?= $pincode['pincode']; ?></h5>
+            </div>
         <?php endforeach; ?>
-     </table>
      <?php else: ?>
-        <h4>No Pincodes Added</h4>
+            <div class="col-12">
+                <h4>No Pincodes Added</h4>
+            </div>
+            </div>
+            </div>
    <?php endif; ?>
 
    <h1 class="h3 mb-3 fw-normal">Add Pincode</h1>

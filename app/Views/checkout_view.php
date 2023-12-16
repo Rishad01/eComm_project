@@ -16,6 +16,16 @@ function text(x){
 }
 </script>
 <?= $this->endsection() ?>
+<?= $this->section('style') ?>
+body{
+            background-color: #FBF6EE;
+        }
+
+input:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+<?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/user_dashboard') ?>
 <div class="container">
@@ -60,6 +70,7 @@ function text(x){
     <h4>GST : &#8377;<?= $tax ?>
     <hr>
     <h4>Total payable amount: &#8377;<?= $total+$tax; ?></h4>
+    <?php $total=$total+$tax; ?>
   </div>
   <div class="col-12">
     <h4>Delivery Address</h4>
@@ -70,7 +81,7 @@ function text(x){
     <div class="row gy-2">
         <?php $address=$controller->get_addr();?>
         <div class="col-12">
-          <input class="form-check-input" type="radio" name="del_addr" id="flexRadioDefault1" value=<?= $address['addr'];?> onclick="text(0)" >
+          <input class="form-check-input" type="radio" name="del_addr" id="flexRadioDefault1" value="<?= $address['addr'];?>" onclick="text(0)" >
           <label class="form-check-label" for="flexRadioDefault1">Default</label>
         </div>
 
@@ -84,7 +95,7 @@ function text(x){
         </div>
 
         <div class="col-12">
-        <textarea  id="new_addr" type="text" name="del_addr" class="form-control" style="display: none" value=<?= $address['addr']; ?> ></textarea>
+        <textarea  id="new_addr" type="text" name="del_addr" class="form-control" style="display: none" ></textarea>
         </div>
 
         <div class="col-3 align-self-center">

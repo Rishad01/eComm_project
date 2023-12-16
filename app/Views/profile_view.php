@@ -1,4 +1,17 @@
 <?php $validation= \Config\Services::validation()?>
+<?= $this->section('style') ?>
+body{
+            background-color: #FBF6EE;
+        }
+.card:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+a:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+<?= $this->endsection() ?>
 <?= $this->extend('layout/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/user_dashboard') ?>

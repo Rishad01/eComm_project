@@ -157,6 +157,7 @@ class User_model extends Model{
 
     public function add_order($data)
     {
+        print_r($data);
         $builder=$this->db->table('finalorder');
         $builder->insert($data);
         if($this->db->affectedRows()==1)

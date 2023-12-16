@@ -1,7 +1,17 @@
 <?php $validation= \Config\Services::validation()?>
 <?= $this->extend('layout/main') ?>
 <?= $this->section('style') ?>
-<?= $this->include('partials/input_style') ?>
+body{
+            background-color: #FBF6EE;
+        }
+.card:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
+input:hover{
+    transform:scale(1.05);
+    transition: 1.05s;
+}
 <?= $this->endsection() ?>
 <?= $this->section('content') ?>
 <?= $this->include('partials/admin_dashboard') ?>
