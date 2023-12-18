@@ -50,7 +50,7 @@ a:hover{
                             </div>
                         </div>
                         </div>
-    </div>
+                    </div>
                 </form>
             <?php endforeach ?> 
     </div>   

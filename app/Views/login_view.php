@@ -3,6 +3,7 @@
 <?= $this->include('partials/input_style') ?>
 <?= $this->endsection() ?>
 <?= $this->section('content') ?>
+<?= $this->include('partials/user_dashboard') ?>
 <?php $validation= \Config\Services::validation()?>
 
 <div class="container">
