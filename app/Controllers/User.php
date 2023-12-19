@@ -62,10 +62,9 @@ class User extends Controller
 
     public function cart($prod_id)
     {
-        if(!session()->has('logged_user'));
+        if(session()->has('logged_user'))
         {
-        return redirect()->to(base_url('homepage/login'));
-        }
+        
         $trans_id_no=$this->idmodel->gettransid();
         print_r($trans_id_no['trans']);
         $prod_detail=$this->usermodel->prod_detail($prod_id);
@@ -78,7 +77,7 @@ class User extends Controller
             $cdata=[
                 'trans_id'=>$trans_id,
                 'prod_id'=>$prod_id,
-                'user_id'=>'ID-20231126-094149-2',
+                'user_id'=>$this->session->get('logged_user'),
                 'qty'=>$this->request->getVar('qty'),
                 'price'=>$prod_detail['sprice']
 
@@ -102,6 +101,12 @@ class User extends Controller
             {
                 echo 'not added to cart';
             }
+        }
+        }
+        else
+        {
+
+            return redirect()->to(base_url('homepage/login'));
         }
     }
 

@@ -132,7 +132,7 @@ class Homepage extends Controller
 
     public function logout()
     {
-        session()->remove('logged_user');
+        
         session()->destroy();
 
         return redirect()->to(base_url('homepage'));
