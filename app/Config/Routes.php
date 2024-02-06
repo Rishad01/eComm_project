@@ -39,6 +39,11 @@ $routes->get('user/remove_cart/(:any)', 'User::remove_cart/$1');
 $routes->get('user/checkout', 'User::checkout');
 $routes->post('user/final_order/(:any)', 'User::final_order/$1');
 $routes->get('user/profile', 'User::profile');
+$routes->get('homepage/cart', 'Homepage::cart');
+$routes->get('homepage/receiveData', 'Homepage::receiveData');
+$routes->get('homepage/checkout_page', 'Homepage::checkout_page');
+$routes->post('homepage/final_order', 'Homepage::final_order');
+$routes->get('homepage/final_order', 'Homepage::final_order');
 
 
 

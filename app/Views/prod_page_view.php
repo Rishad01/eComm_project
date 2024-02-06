@@ -90,40 +90,6 @@ a:hover{
     var product=[];
     function add(prod_id)
     {
-        /*var arr ={
-        id: prod_id
-        };
-        //let qty=document.getElementById(prod_id).value
-        var selector='.'+prod_id;
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; i++) 
-        {
-            var element = elements[i];
-            var tagType=element.tagName.toLowerCase();
-            if(tagType == 'img')
-            {
-                var x=element[i].getAttribute('src');
-                arr.image=x;
-            }
-            else if(tagType == 'input')
-            {
-                var x=element[i].value;
-                arr.qty=x;
-            }
-            else
-            {
-                if(element[i].className == 'name')
-                {
-                    var x=element[i].innerHTML;
-                    arr.name=x;
-                }
-                else if(element[i].className == 'price')
-                {
-                    var x=element[i].innerHTML;
-                    arr.price=x;
-                }
-            }
-        }*/
 
         var name=document.getElementById('n'+prod_id).innerText;
         var price=document.getElementById('p'+prod_id).innerText;
