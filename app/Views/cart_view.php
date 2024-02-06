@@ -45,7 +45,7 @@
                 </tbody>
             </table>
     <button id="checkoutButton" class="btn btn-dark mt-4">Checkout</button>
-
+    
     <!--<div id="test"></div>-->
     <!-- Your HTML content -->
     
@@ -77,11 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(jsonData);
 
     function displayProducts(products) {
+        var jsonData = JSON.parse(localStorage.getItem("cart"));
+        if(jsonData.length === 0)
+        {
+            document.getElementById("checkoutButton").style.display='none';
+        }
+        else
+        {
+            document.getElementById("checkoutButton").style.display='block';
+        }
         var userTable = document.getElementById('userTable');
 
         products.forEach(function(product, index) {
             var tableRow = document.createElement('tr');
-
+            tableRow.id=index;
             // Create and append thumbnail directly to the table row
             var col=document.createElement('td');
             var thumbnail = document.createElement('img');
@@ -122,21 +131,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleRemoveProduct(index) {
-        // Remove the product from the jsonData array based on the index
-        jsonData.splice(index, 1);
+        console.log("Index to remove:", index); // Debugging
+    console.log("Original JSON data:", jsonData); // Debugging
 
-        // Update the UI by redrawing the products
-        clearProductList();
-        displayProducts(jsonData);
+    // Remove the product from the jsonData array based on the index
+    jsonData.splice(index, 1);
 
+    console.log("Modified JSON data:", jsonData); // Debugging
+        clearProductList(index);
         // Update localStorage with the modified jsonData
         localStorage.setItem("cart", JSON.stringify(jsonData));
+        displayProducts(jsonData);
     }
 
-    function clearProductList() {
-        // Clear the existing product list
-        var productList = document.getElementById('productList');
-        productList.innerHTML = '';
+    function clearProductList(index) {
+        var userTable = document.getElementById('userTable');
+        userTable.innerHTML = '';
+        
     }
 
     var checkoutButton = document.getElementById('checkoutButton');

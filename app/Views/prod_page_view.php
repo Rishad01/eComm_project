@@ -52,7 +52,7 @@ a:hover{
                                 <div class="row">
                                     <div class="col-6">
                                     <div class="form">
-                                        <input type="number" name="qty" class="form-control shadow-none" id="floatingInput" placeholder="Quantity">
+                                        <input value="1" type="number" name="qty" class="form-control shadow-none" id="floatingInput" placeholder="Quantity">
                                     </div>
                                     </div>
                                     <div class="col-6">
