@@ -128,8 +128,8 @@ a:hover{
      <div class="col-12">
      <div class="mb-3">
         <label for="formFile" class="form-label">Add image of Product</label>
-        <input class="form-control" type="file" name="pic">
-        <span class="text-danger"><?= $validation->getError('pic'); ?></span>
+        <input class="form-control" type="file" name="image">
+        <span class="text-danger"><?= $validation->getError('image'); ?></span>
       </div>
       </div>
 

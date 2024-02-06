@@ -1,5 +1,8 @@
 <?= $this->extend('layout/main') ?>
-<?= $this->section('content') ?>
+<?= $this->section('script') ?>
+
+<?= $this->endsection() ?>
+
 <?= $this->section('style') ?>
 body{
             background-color: #FBF6EE;
@@ -14,27 +17,38 @@ a:hover{
 }
 <?= $this->include('partials/input_style') ?>
 <?= $this->endsection() ?>
+<?= $this->section('content') ?>
 <?= $this->include('partials/user_dashboard') ?>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php foreach($products as $product): ?>
-                <form action="<?= base_url('user/cart/')?><?= $product['prod_id'] ?>" method="post">
+                
                 <div class="col">
                     <div class="card shadow-sm">
-                    <img class="rounded" src="<?= $product['image']; ?>">
+                    <img class="rounded" id="<?= 'img'.$product['prod_id']?>" src="<?= $product['image']; ?>">
                         <div class="card-body">
                             <div class="container text-center">
                                 <div class="row">
+                                    <?php
+                                    $item=[
+                                        'prod_id'=>$product['prod_id'],
+                                        'name'=>$product['name'],
+                                        'price'=>$product['sprice'],
+                                        'image'=>$product['image']
+                                    ];
+                                    ?>
+                                    
                                     <div class="col-6">
-                                        <h4><?= $product['descr']; ?></h4>
+                                        <h4 id="<?= 'n'.$product['prod_id']?>" ><?= $product['name']; ?></h4>
                                     </div>
                                     <div class="col-6">
-                                        <h4>&#8377;<?= $product['sprice']; ?>/<?= $product['unit']; ?></h4>
+                                        <h4 id="<?= 'p'.$product['prod_id']?>" price">&#8377;<?= $product['sprice']; ?>/<?= $product['unit']; ?></h4>
                                     </div>
                                 </div>
-
+                                <?php if(session()->has("logged_user")): ?>
+                                <form action="<?= base_url('user/cart/')?><?= $product['prod_id'] ?>" method="post">
                                 <div class="row">
                                     <div class="col-6">
                                     <div class="form">
@@ -43,53 +57,90 @@ a:hover{
                                     </div>
                                     <div class="col-6">
                                     <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                    <input type="submit" value="Add to cart" class="btn btn-sm btn-outline-secondary">
                                     </div>
                                     </div>
                                 </div>
+                                </form>
+                                <?php else: ?>
+                                    <div class="row">
+                                    <div class="col-6">
+                                    <div class="form">
+                                        <input value="1" type="number" name="qty" class="form-control shadow-none" id="<?= 'qty'.$product['prod_id']?>" placeholder="Quantity">
+                                    </div>
+                                    </div>
+                                    <div class="col-6">
+                                    <div class="btn-group">
+                                    <input type="submit" value="Add to cart" class="btn btn-sm btn-outline-secondary" onclick="add(<?= $product['prod_id']?>)">
+                                    </div>
+                                    </div>
+                                </div>
+                                <?php endif ?>
                             </div>
                         </div>
                         </div>
                     </div>
-                </form>
             <?php endforeach ?> 
     </div>   
         
     </div>
   </div>
 </div>
-<?= $this->endsection() ?>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col">
-    <div class="card shadow-sm">
-    <img width="150px" height="150px" src="<?= $product['image']; ?>">
-        <div class="card-body">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-6">
-                        <h4><?= $product['descr']; ?></h4>
-                    </div>
-                    <div class="col-6">
-                        <h4>&#8377;<?= $product['sprice']; ?>/<?= $product['unit']; ?></h4>
-                    </div>
-                </div>
+<script>
+    var product=[];
+    function add(prod_id)
+    {
+        /*var arr ={
+        id: prod_id
+        };
+        //let qty=document.getElementById(prod_id).value
+        var selector='.'+prod_id;
+        var elements = document.querySelectorAll(selector);
+        for (var i = 0; i < elements.length; i++) 
+        {
+            var element = elements[i];
+            var tagType=element.tagName.toLowerCase();
+            if(tagType == 'img')
+            {
+                var x=element[i].getAttribute('src');
+                arr.image=x;
+            }
+            else if(tagType == 'input')
+            {
+                var x=element[i].value;
+                arr.qty=x;
+            }
+            else
+            {
+                if(element[i].className == 'name')
+                {
+                    var x=element[i].innerHTML;
+                    arr.name=x;
+                }
+                else if(element[i].className == 'price')
+                {
+                    var x=element[i].innerHTML;
+                    arr.price=x;
+                }
+            }
+        }*/
 
-                <div class="row">
-                    <div class="col-6">
-                    <div class="form-floating">
-                        <input type="number" name="qty" class="form-control shadow-none" id="floatingInput" >
-                        <label for="floatingInput">Quantity</label>
-                    </div>
-                    </div>
-                    <div class="col-6">
-                    <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-    
+        var name=document.getElementById('n'+prod_id).innerText;
+        var price=document.getElementById('p'+prod_id).innerText;
+        var qty=document.getElementById('qty'+prod_id).value;
+        var image=document.getElementById('img'+prod_id).getAttribute('src');
+
+        var arr = {
+            id: prod_id,
+            name: name,
+            price: price,
+            quantity: qty,
+            pic: image
+        };
+        //console.log(arr);
+        product.push(arr);
+        localStorage.setItem("cart",JSON.stringify(product));
+        //console.log(localStorage.getItem("cart"));
+    }
+</script>
+<?= $this->endsection() ?>

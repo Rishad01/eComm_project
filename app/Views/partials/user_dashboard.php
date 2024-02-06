@@ -55,6 +55,7 @@
                 </ul>
                 <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+        <li class="nav-item"><a href="<?= base_url('homepage/cart') ?>" class="nav-link px-2 link-body-emphasis">Cart</a></li>
         <li class="nav-item"><a href="<?= base_url('homepage/login') ?>" class="nav-link px-2 link-body-emphasis">Login</a></li>
         <li class="nav-item"><a href="<?= base_url('homepage/signup') ?>" class="nav-link px-2 link-body-emphasis">Sign Up</a></li>
         </ul>
@@ -62,6 +63,6 @@
                 </div>
             </div>
             </nav>
-        <?php endif ?>    
+        <?php endif; ?>    
       
   </header>
